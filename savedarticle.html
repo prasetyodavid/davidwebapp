@@ -91,7 +91,9 @@
           document.getElementById("twitter").href="https://twitter.com/share?url="+link;
 
           var commentContent = localStorage.getItem("postcomment"+index);
-          document.write(commentContent);
+          if(commentContent!='undefined'){
+            document.write(commentContent);
+          }
 
         </script>
 
