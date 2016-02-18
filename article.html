@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title id="thetitle">Article</title>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/robotofont.css" type="text/css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/animsition.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/material.teal-deep_orange.min.css">  
+    <link rel="stylesheet" href="css/swipebox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+ 
+    #share-buttons img {
+    width: 35px;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0;
+    display: inline;
+    }
+
+    .article-bg {
+      background: center / cover;
+      height: 250px;
+      width: 100%;
+    }
+     
+    </style>
+
+  <script type="text/javascript">
+  //SAVE FEATURE
+    var global_postid;
+    var global_posttitle;
+    var global_postbody;
+    var global_postcomment;
+    var global_postdate;
+    var global_postauthor;
+    var global_postlink;
+    var global_blogid;
+
+
+
+    function savepost(){
+     if (localStorage.getItem(global_postid)  != global_postid){
+       var next_index = parseInt(localStorage.getItem("init"))+1;
+       localStorage.setItem("init", next_index);
+       localStorage.setItem(global_postid, global_postid);
+       localStorage.setItem("postid"+next_index, global_postid);
+       localStorage.setItem("posttitle"+next_index, global_posttitle);
+       localStorage.setItem("postbody"+next_index, global_postbody);
+       localStorage.setItem("postcomment"+next_index, global_postcomment);
+       localStorage.setItem("postdate"+next_index, global_postdate);
+       localStorage.setItem("postauthor"+next_index, global_postauthor);
+       localStorage.setItem("postlink"+next_index, global_postlink);
+       localStorage.setItem("blogid", global_blogid);
+       //check
+       if(localStorage.getItem("init") == next_index){
+        swal("Saved!", "This article has been saved on your device.", "success")
+       }else{
+        swal("Oops...", "Data saving failed!", "error");
+       }
+     }else{
+      swal("Oops...", "This article already exists!", "error");
+     }
+    }
+  </script>
+
+  </head>
+  <body>
+    <div class="animsition">
+      <!-- Header -->
+      <header class="mdl-layout__header mdl-layout__header--waterfall transparent-header no-drawer">
+        <div class="mdl-layout__header-row">
+          <a href="index.html" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">arrow_back</i>
+          </a>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="mdl-layout__content"> 
+      <script type="text/javascript">
+      var img = Math.floor((Math.random() * 5) + 1);
+        document.write('<img src="img/'+img+'.jpg" class="article-bg"></img>');
+        </script>
+        <div class="article">
+
+            <script type="text/javascript">
+
+            function convertDate(inputFormat) {
+              function pad(s) { return (s < 10) ? '0' + s : s; }
+              var d = new Date(inputFormat);
+              return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+            }
+
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
+            function AmbilContent(json) {
+            for (var i = 0; i < 1; i++) {
+              //  var judul = json.entry.title.$t;
+              //  var hasilItem = '<h3 class="titleblog">'+judul+'</h3>' ;               
+              //  document.write(hasilItem);
+                var judul = json.entry.title.$t;
+                var isi = json.entry.content.$t;
+                var link = json.entry.link[4].href;
+                var jml_komentar = json.entry.thr$total.$t;
+                var published = json.entry.published.$t;
+                published = new Date(published);
+                published = convertDate(published);
+                var admin_author = json.entry.author[0].name.$t;
+
+             //   var hasilItem = '<div class="wrapper"><h1 class="titleblog">'+judul+'</h1><div class="contentblog">'+isi+'</div></div><a href="'+link+'">Original Link</a><br> Komentar : '+ r;                
+             //   document.write(hasilItem);
+
+
+            var headerContent =  '<h4>'+judul+'</h4><div class="article-content mdl-shadow--2dp"><div class="author"><div class="minilogo admin"></div><div class="card-author"><span><strong> By : '+ admin_author + '</strong></span><span>'+published+'</span></div><div class="share"><button onclick="savepost()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">bookmark</i></button><button class="mdl-button mdl-js-button mdl-button--icon"><a id="comment" ><i class="material-icons">reply</i></a></button></div><div class="clr"></div></div><div class="drawer-separator"></div>'
+
+            document.write(headerContent);
+
+              var articleContent = isi;
+              document.write(articleContent);
+
+              document.write('<br><div id="share-buttons"><b>SHARE THIS : &nbsp; &nbsp; &nbsp; </b><a id="fb" href="" ><img src="img/facebook.png" alt="Facebook" /></a><a id="gplus" href="" ><img src="img/google.png" alt="Google" /></a><a id="twitter" href="" ><img src="img/twitter.png" alt="Twitter" /></a></div><div class="drawer-separator"></div>');
+
+              document.write('<span class="comment-count">'+ jml_komentar+' Comments</span>');
+              var blogID = json.entry.id.$t;
+              var blogID = blogID.substr(blogID.indexOf("blog-") + 5);
+              var blogID = blogID.substr(0, blogID.indexOf('.')); 
+              
+              var postID = json.entry.id.$t;
+              var postID = postID.substr(postID.indexOf("post-") + 5);
+              var linkKomentar = '<br><a href="https://www.blogger.com/comment.g?blogID='+ blogID  +'&postID='+ postID +'"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"> WRITE COMMENT </button></a>'
+              document.write(linkKomentar);
+               document.getElementById("comment").href="https://www.blogger.com/comment.g?blogID="+ blogID  +"&postID="+ postID; 
+
+              //SAVE
+              global_postid=postID;
+              global_posttitle=judul;
+              global_postauthor=admin_author;
+              global_postbody=isi;
+              global_postdate=published;
+              global_postlink=link;
+              global_blogid =blogID; 
+
+              document.getElementById("fb").href="http://www.facebook.com/sharer.php?u="+link;
+              document.getElementById("gplus").href="https://plus.google.com/share?url="+link;
+              document.getElementById("twitter").href="https://twitter.com/share?url="+link;
+              }
+            }
+
+            var allcomment='';
+            function AmbilComment(json) {
+            for (var i = 0; i < json.feed.entry.length; i++) {
+                var author = json.feed.entry[i].author[0].name.$t;
+                var isi = json.feed.entry[i].content.$t;
+                var published = json.feed.entry[i].published.$t;
+                published = new Date(published);
+                published = convertDate(published);
+
+           var commentContent =  '<div class="drawer-separator"></div><div class="author comment"><div class="minilogo user1"></div><div class="card-author"><span><strong>'+author+'</strong></span><span>'+published+'</span></div><div class="clr"></div><br>'+isi+'</div>';
+
+                document.write(commentContent);
+                allcomment = allcomment + commentContent;
+              }
+                global_postcomment=allcomment;
+            }
+
+            </script>
+
+
+            <script language="javascript" type="text/javascript">
+            var i = getParameterByName('postid'); //postID
+            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/default/"+i+"?alt=json-in-script&callback=AmbilContent'><\/sc" + "ript>");
+
+            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/"+i+"/comments/default?alt=json-in-script&callback=AmbilComment'><\/sc" + "ript>");
+            </script>
+</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/animsition.js"></script>
+    <script src="js/sweetalert.min.js"></script> 
+    <script src="js/material.min.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/function.js"></script>
+  </body>
+</html>

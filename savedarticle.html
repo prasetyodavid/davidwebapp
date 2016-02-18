@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title id="thetitle">Article</title>
+  <meta name="description" content="">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/robotofont.css" type="text/css">
+  <link rel="stylesheet" href="css/icon.css">
+  <link rel="stylesheet" href="css/animsition.css">
+  <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+  <link rel="stylesheet" href="css/material.teal-deep_orange.min.css">  
+  <link rel="stylesheet" href="css/swipebox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style type="text/css">
+
+    #share-buttons img {
+      width: 35px;
+      padding: 5px;
+      border: 0;
+      box-shadow: 0;
+      display: inline;
+    }
+
+  </style>
+
+</head>
+<body>
+  <div class="animsition">
+    <!-- Header -->
+    <header class="mdl-layout__header mdl-layout__header--waterfall transparent-header no-drawer">
+      <div class="mdl-layout__header-row">
+        <a href="savedlist.html" class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="mdl-layout__content"> 
+      <div class="article-bg"></div> <!-- header background -->
+      <div class="article">
+
+        <script type="text/javascript">
+
+          function convertDate(inputFormat) {
+            function pad(s) { return (s < 10) ? '0' + s : s; }
+            var d = new Date(inputFormat);
+            return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+          }
+
+          function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+          }
+
+          var index = getParameterByName('index');
+
+          var judul = localStorage.getItem("posttitle"+index);
+          var isi = localStorage.getItem("postbody"+index);
+          var link = localStorage.getItem("postlink"+index);;
+          var published = localStorage.getItem("postdate"+index);
+          var admin_author = localStorage.getItem("postauthor"+index);
+
+          var headerContent =  '<h4>'+judul+'</h4><div class="article-content mdl-shadow--2dp"><div class="author"><div class="minilogo admin"></div><div class="card-author"><span><strong> By : '+ admin_author + '</strong></span><span>'+published+'</span></div><div class="share"><button class="mdl-button mdl-js-button mdl-button--icon"><a id="comment" ><i class="material-icons">reply</i></a></button></div><div class="clr"></div></div><div class="drawer-separator"></div>'
+
+          document.write(headerContent);
+
+          var articleContent = isi;
+          document.write(articleContent);
+
+          document.write('<br><div id="share-buttons"><b>SHARE THIS : &nbsp; &nbsp; &nbsp; </b><a id="fb" href="" ><img src="img/facebook.png" alt="Facebook" /></a><a id="gplus" href="" ><img src="img/google.png" alt="Google" /></a><a id="twitter" href="" ><img src="img/twitter.png" alt="Twitter" /></a></div><div class="drawer-separator"></div>');
+          var blogID = localStorage.getItem("blogid");
+
+          var postID = localStorage.getItem("postid"+index);
+          var linkKomentar = '<br><a href="https://www.blogger.com/comment.g?blogID='+ blogID  +'&postID='+ postID +'"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"> WRITE COMMENT </button></a>'
+          document.write(linkKomentar);
+          document.getElementById("comment").href="https://www.blogger.com/comment.g?blogID="+ blogID  +"&postID="+ postID; 
+
+          document.getElementById("fb").href="http://www.facebook.com/sharer.php?u="+link;
+          document.getElementById("gplus").href="https://plus.google.com/share?url="+link;
+          document.getElementById("twitter").href="https://twitter.com/share?url="+link;
+
+          var commentContent = localStorage.getItem("postcomment"+index);
+          document.write(commentContent);
+
+        </script>
+
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/animsition.js"></script>
+<script src="js/sweetalert.min.js"></script> 
+<script src="js/material.min.js"></script>
+<script src="js/jquery.swipebox.min.js"></script>
+<script src="js/function.js"></script>
+</body>
+</html>

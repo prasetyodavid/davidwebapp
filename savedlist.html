@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Gravity</title>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/robotofont.css" type="text/css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/animsition.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/material.teal-deep_orange.min.css">  
+    <link rel="stylesheet" href="css/swipebox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <div class="animsition">
+      <!-- Header -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+          <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Saved Articles</span>
+            <button class="mdl-button mdl-js-button mdl-button--icon">
+            </button>
+            <!-- Spacer -->
+            <div class="mdl-layout-spacer"></div>
+          </div>
+        </header>
+        <!-- Top-right Dropdown Menu -->
+        <!-- Sidebar -->
+       <div class="mdl-layout__drawer">
+          <!-- Top -->
+          <div class="mdl-card mdl-shadow--2dp mdl-color--primary mdl-color-text--blue-grey-50 drawer-profile">
+            <div class="mdl-card__title user">
+              <img src="img/davidprasetyo.png" alt="" />
+              <span class="user-name">davidprasetyo.com</span>
+              <span class="user-mail">davidpras1994@gmail.com</span>
+              <button id="user-menu" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">arrow_drop_down</i>
+              </button>
+            </div>
+            <!-- Top-right User -->
+          </div>
+          <!-- Dropdown Menu -->
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="user-menu">
+          <a href="http://www.emailmeform.com/builder/form/aefcut4Uoy6NLmf40z" >
+            <li class="mdl-menu__item">Contacts</li>
+            </a>
+          </ul>
+          <!-- Main Navigation -->
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link animsition-link" href="index.html"><i class="material-icons">home</i><span>Home</span></a>
+            <a class="mdl-navigation__link animsition-link" href="https://about.me/davidprasetyo"><i class="material-icons">account_circle</i><span>Profile</span></a>
+            <div class="mdl-collapse">
+                <a class="mdl-navigation__link mdl-collapse__button"><i class="material-icons">image</i>
+                    <i class="material-icons mdl-collapse__icon mdl-animation--default">expand_more</i>
+                    <span>Gallery</span>
+                </a>
+                <div class="mdl-collapse__content-wrapper">
+                  <div class="mdl-collapse__content mdl-animation--default" style="margin-top: -156px;">
+                    <a class="mdl-navigation__link animsition-link" href="masonry.html">Artworks</a>
+                  </div>
+                </div>
+            </div>
+            <div class="mdl-collapse">
+                <a class="mdl-navigation__link mdl-collapse__button"><i class="material-icons">library_books</i>
+                    <i class="material-icons mdl-collapse__icon mdl-animation--default">expand_more</i>
+                    <span>Blog</span>
+                </a>
+                <div class="mdl-collapse__content-wrapper">
+                  <div class="mdl-collapse__content mdl-animation--default" style="margin-top: -156px;">
+                    <a class="mdl-navigation__link animsition-link" href="category.html?tag=Dunia IT">Dunia IT</a>
+                    <a class="mdl-navigation__link animsition-link" href="category.html?tag=Research">IT Development</a>
+                    <a class="mdl-navigation__link animsition-link" href="category.html?tag=Tutorial IT">Tutorial</a>
+                    <a class="mdl-navigation__link animsition-link" href="category.html?tag=Movies">Film & Review</a>
+                    <a class="mdl-navigation__link animsition-link" href="category.html?tag=Kana Hanazawa">Ngidol Hanakana</a>
+                    <a class="mdl-navigation__link animsition-link" href="category.html?tag=JKT48">Ngidol Jiketi</a>
+                    <a class="mdl-navigation__link animsition-link" href="category.html?tag=opini">Opini</a>
+                    <a class="mdl-navigation__link animsition-link" href="search.html?q=download">Download</a>
+                  </div>
+                </div>
+            </div>
+            <a class="mdl-navigation__link animsition-link" href="liveupdates.html"><i class="material-icons">queue_music</i><span>Live Updates</span></a>
+            <a class="mdl-navigation__link animsition-link" href="savedlist.html"><i class="material-icons">folder</i><span>Saved Articles</span></a>
+            <div class="drawer-separator"></div>
+            <div class="mdl-collapse">
+                <a class="mdl-navigation__link mdl-collapse__button"><i class="material-icons">apps</i>
+                    <i class="material-icons mdl-collapse__icon mdl-animation--default">expand_more</i>
+                    <span>App</span>
+                </a>
+                <div class="mdl-collapse__content-wrapper">
+                  <div class="mdl-collapse__content mdl-animation--default" style="margin-top: -156px;">
+                    <a class="mdl-navigation__link animsition-link" href="https://accounts.google.com/Login">Login</a>
+                    <a class="mdl-navigation__link animsition-link" href="http://www.emailmeform.com/builder/form/aefcut4Uoy6NLmf40z">Contacts</a>
+                  </div>
+                </div>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Page Content -->
+        <main class="mdl-layout__content">
+
+
+
+          <div class="calendar-day">
+
+            <div class="calendar-activity now">
+              <div class="circle mdl-color--accent"></div>
+              <div class="line mdl-color--accent"></div>
+            </div>
+
+            <script type="text/javascript">
+            var oke=false;
+
+
+            function okey() {
+                setTimeout(function () {
+                          if (oke==true){
+                            location.reload();
+                          }
+                }, 3000);
+            }
+
+            function confirmd(index,postid,title){
+                swal({   
+                    title: "Are you sure?",
+                    text: "You will delete : "+title,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: "No, cancel it!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm){
+                if (isConfirm){
+                   localStorage.removeItem(postid);
+                   localStorage.removeItem("postid"+index);
+                   localStorage.removeItem("posttitle"+index);
+                   localStorage.removeItem("postbody"+index);
+                   localStorage.removeItem("postcomment"+index);
+                   localStorage.removeItem("postdate"+index);
+                   localStorage.removeItem("postauthor"+index);
+                   localStorage.removeItem("postlink"+index);
+                   oke=true;
+                   swal("Deleted!", "Your file has been deleted!", "success");
+                } else {
+                   oke=false;
+                  swal("Cancelled", "Your file is safe!", "error");
+                }
+                });
+            };
+
+             var max = localStorage.getItem("init");
+
+             var color = [
+              'red',
+              'cyan',
+              'green',
+              'teal'
+              ];
+             
+             var num=0;
+             for(i=1; i<=max;i++){
+              if (localStorage.getItem("postid"+i)!=null){
+                num=num+1;
+                var judul = localStorage.getItem("posttitle"+i);
+                var isi = localStorage.getItem("postbody"+i);
+                var judul_view = "'"+judul+"'";
+                var postid = "'"+localStorage.getItem("postid"+i)+"'";
+                var link = localStorage.getItem("postlink"+i);
+                var published = localStorage.getItem("postdate"+i);
+                var index=Math.floor(Math.random() * color.length);
+                document.write('<div class="calendar-date"><span class="mdl-color-text--accent">'+num+'</span><span>&nbsp;</span></div><div class="calendar-activity '+color[index]+' mdl-shadow--1dp"><a onclick="confirmd('+i+','+postid+','+judul_view+')" class="mdl-button mdl-js-button"><i class="material-icons">close</i></a><span><b>'+judul+'</b></span><span class="calendar-hour">'+published+' &nbsp; &nbsp; &nbsp; <a style="color: rgb(255,255,255);" href="savedarticle.html?index='+i+'" ><u>VIEW</u></a></span></div>');
+
+              }}
+
+            </script>
+            <!-- current moment -->
+            <div class="calendar-activity now">
+              <div class="circle mdl-color--accent"></div>
+              <div class="line mdl-color--accent"></div>
+            </div>
+
+            <div class="calendar-activity cyan mdl-shadow--1dp hidden">
+              <a id="sa-basic" class="mdl-button mdl-js-button"><i class="material-icons">close</i></a>
+              <span>Make reservation for lunch</span>
+            </div>
+
+            <div class="clr"></div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/animsition.js"></script>
+    <script src="js/sweetalert.min.js"></script> 
+    <script src="js/material.min.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/sweet.js"></script>
+  </body>
+</html>

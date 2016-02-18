@@ -1,0 +1,1182 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project: Gravity
+Version: 1.0
+Last change: 05/09/15 [first release]
+Primary use: App & Mobile Website 
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Utility
+2. Base Elements
+3. Page Transition
+4. Layout
+	4.1. Grid
+	4.2. Header
+	4.3. Drawer
+5. Elements
+	5.1.Accordion
+	5.2.Progress Bar
+	5.3.Card
+	5.4.Table
+	5.5.Searchbar
+	5.6.Badge
+	5.7.Tab
+6. Page Specific
+	6.1.Home
+	6.2.Gallery
+	6.3.Blog
+	6.4.Article
+	6.5.Player
+	6.6.Profile
+	6.7.Login
+	6.8.Messages
+	6.9.Settings
+	6.10.Calendar
+-------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------
+1. UTILITY
+-------------------------------------------------------------------*/
+.title {
+	display: block;
+	font-weight: bold;
+}
+.valign-wrapper {
+    display: table;
+}
+.valign-wrapper .valign {
+    display: table-cell;
+    vertical-align: middle;
+}
+.clr {
+	clear: both;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.transparent-header {
+	background-color: transparent;
+	position: absolute;
+	box-shadow: none;
+}
+.no-accent-color {
+	color: rgba(0,0,0,.54);
+}
+.minilogo {
+    width: 44px;
+    height: 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 44px;
+    border-radius: 22px;
+    background-color: #F5F5F5;
+    margin-right: 16px;
+    float: left;
+}
+.user1 {
+	background-image: url('../img/user.jpg');
+}
+.user2 {
+	background-image: url('../img/sub-user.jpg');
+}
+
+.admin {
+	background-image: url('../img/davidprasetyo.png');
+}
+
+/*------------------------------------------------------------------
+2. BASE ELEMENTS
+-------------------------------------------------------------------*/
+html {
+    background-color: #f1f4f5;
+    font-weight: 300;
+    color: rgba(0,0,0,.54);
+}
+html, body {
+	font-family: "Roboto";
+	font-weight: 300;
+}
+a {
+	text-decoration: none;
+}
+img {
+	width: 100%;
+	height: auto;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+header {
+	color: #ffffff !important;
+}
+header a button i {
+	color: #fff;
+}
+header .mdl-layout__header-row button {
+	margin-left: 8px;
+}
+.mdl-menu a li {
+	color: rgba(0,0,0,.54);
+}
+.mdl-layout__container {
+    position: relative !important;
+    width: 100% !important;
+    height: 100vh !important;
+}
+.mdl-layout__content {
+	width: 100%;
+}
+.mdl-textfield {
+	width: auto;
+}
+.mdl-layout__header-row .no-accent-color {
+	color: #fff;
+}
+.mdl-layout-title {
+	font-weight: 300;
+}
+
+/*------------------------------------------------------------------
+3. PAGE TRANSITION
+-------------------------------------------------------------------*/
+.animsition, .animsition-overlay {
+	position: static;
+	min-height: 100vh;
+}
+
+/*------------------------------------------------------------------
+4. LAYOUT
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+4.1. GRID
+-------------------------------------------------------------------*/
+.mdl-grid {
+    padding: 8px;
+}
+.mdl-cell {
+	margin: 8px;
+}
+.mdl-cell--4-col {
+    width: calc(33.33333% - 16px);
+}
+.mdl-cell--6-col {
+    width: calc(50% - 16px);
+}
+.mdl-cell--8-col {
+    width: calc(66.66666% - 16px);
+}
+.mdl-cell--12-col {
+	width: calc(100% - 16px);
+}
+
+/*------------------------------------------------------------------
+4.2. HEADER
+-------------------------------------------------------------------*/
+.no-drawer {
+	position: absolute;
+}
+.no-drawer .mdl-layout__header-row {
+	padding-left: 16px;
+}
+.no-drawer .mdl-layout-title {
+	padding-left: 22px;
+}
+
+/*------------------------------------------------------------------
+4.3. DRAWER
+-------------------------------------------------------------------*/
+.mdl-collapse__content .mdl-navigation__link {
+  font-weight: 300;
+}
+#user-menu {
+	position: absolute;
+	right: 16px;
+	bottom: 9px;
+	display: inline-block;
+}
+.user img {
+	border-radius: 100%;
+	width: 64px;
+	margin-bottom: 16px;
+}
+.sub-user {
+	float:right; 
+	width:40px; 
+	border-radius:100%;
+}
+.user-name {
+	margin-bottom: 2px;
+	font-size: 14px;
+	font-family: 'Roboto';
+	font-weight: 400;
+	display: block;
+}
+.user-mail {
+	font-size: 14px;
+	font-family: 'Roboto';
+	font-weight: 100;
+	display: table;
+}
+.drawer-separator {
+    height: 1px;
+    background-color: #DCDCDC;
+    margin: 8px 0px;
+}
+.mdl-layout__drawer {
+	border-right: none;
+}
+.drawer-profile {
+	box-shadow: none;
+	width: 100%;
+	border-radius: 0;
+}
+.drawer-profile i {
+	color: #fff;
+}
+.drawer-profile > .mdl-card__title {
+    color: #fff;
+    height: auto;
+    display: block;
+}
+.mdl-layout__drawer .mdl-navigation span {
+	float: left;
+	line-height: 24px;
+}
+.mdl-layout__drawer .mdl-navigation i {
+	float: left;
+	margin-right: 32px;
+}
+.mdl-layout__drawer-button {
+	line-height: 56px;
+	height: 48px;
+}
+.mdl-layout__drawer-button i {
+	height: 32px;
+	line-height: 32px;
+	font-size: 24px;
+}
+
+/*------------------------------------------------------------------
+5. ELEMENTS
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+5.1. ACCORDION
+-------------------------------------------------------------------*/
+.mdl-navigation__link.mdl-collapse__button {
+  cursor: pointer;
+}
+
+.mdl-collapse.mdl-collapse--opened {
+  margin-top: 0;
+}
+
+.mdl-collapse__content .mdl-navigation__link {
+		padding-left: 90px !important;
+}
+
+.mdl-navigation__link.mdl-collapse__button {
+  min-height: 24px;
+}
+
+.mdl-collapse.mdl-collapse--opened + .mdl-collapse.mdl-collapse--opened {
+  border-top: none;
+  margin-top: 0;
+}
+
+.mdl-collapse .mdl-collapse__content-wrapper {
+  overflow: hidden;
+}
+
+.mdl-collapse .mdl-collapse__content {
+  transition-property: margin-top;
+  transition-duration: 0.4s;
+}
+
+.mdl-collapse .mdl-collapse__icon {
+  transition-property: transform;
+  transition-duration: 0.4s;
+  color: rgba(0,0,0,0.3);
+  position: absolute;
+  right: 0;
+  margin-top: 0;
+  margin-right: 20px !important;
+}
+
+.mdl-collapse.mdl-collapse--opened .mdl-collapse__icon {
+  transform: rotate(-180deg);
+}
+
+.mdl-collapse.mdl-collapse--opened .mdl-collapse__content {
+  margin-top: 0 !important;
+}
+
+/*------------------------------------------------------------------
+5.2. PROGRESS BAR
+-------------------------------------------------------------------*/
+.mdl-progress > .progressbar {
+    background-color: rgb(233, 30, 99);
+    z-index: 1;
+    left: 0;
+}
+.mdl-progress > .bufferbar {
+    background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), 
+                      -webkit-linear-gradient(left, rgb(233, 30, 99), rgb(233, 30, 99));
+    background-image: linear-gradient(to right, rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), 
+                      linear-gradient(to right, rgb(233, 30, 99), rgb(233, 30, 99));
+    z-index: 0;
+    left: 0;
+}
+}.mdl-progress: not(.mdl-progress__indeterminate) > .auxbar {
+    background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)), 
+                      -webkit-linear-gradient(left, rgb(233, 30, 99), rgb(233, 30, 99));
+    background-image: linear-gradient(to right, rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)), 
+                      linear-gradient(to right, rgb(233, 30, 99), rgb(233, 30, 99));
+}
+.mdl-progress.mdl-progress__indeterminate > .bar1, .mdl-progress.mdl-progress__indeterminate > .bar3 {
+    background-color: rgb(233, 30, 99);
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+/*------------------------------------------------------------------
+5.3. CARDS
+-------------------------------------------------------------------*/
+.mdl-card, .mdl-card__title-text, .mdl-card__supporting-text {
+	display: block;
+}
+.mdl-card__title-text {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    display: block;
+}
+.mdl-card__menu {
+	color: #fff;
+}
+.card-author {
+	float:left;
+}
+.card-author span:first-child {
+	display: block;
+	margin-top: 4px;
+}
+.mdl-card {
+	width: 100%;
+    max-width: 100%;
+    min-height: 0;
+}
+.mdl-card__title-text {
+	font-weight: 400;
+}
+.mdl-card__title a {
+	color: #ffffff;
+}
+.mdl-card__supporting-text {
+	width: auto;
+}
+.mdl-card .mdl-button--fab {
+	position: absolute;
+	right: 16px;
+	bottom: -28px;
+}
+.mdl-card__actions .mdl-button {
+	float: right;
+}
+.mdl-card__supporting-text {
+	border-top: 1px solid rgba(0,0,0,.1);
+}
+
+/*------------------------------------------------------------------
+5.4. TABLE
+-------------------------------------------------------------------*/
+.mdl-data-table {
+	width: 100%;
+	display: block;
+}
+thead, tbody, .mdl-data-table__cell--non-numeric {
+	width: 100%;
+}
+
+/*------------------------------------------------------------------
+5.5. SEARCHBAR
+-------------------------------------------------------------------*/
+.mdl-layout__header .mdl-textfield__input {
+	border-color: #ffffff;
+}
+
+/*------------------------------------------------------------------
+5.6. BADGE
+-------------------------------------------------------------------*/
+.mdl-menu .mdl-badge[data-badge]:after {
+	top: 2px;
+	right: 10px;
+	position: absolute;
+}
+.mdl-menu .mdl-badge {
+	margin-right: 0;
+}
+
+/*------------------------------------------------------------------
+5.7. TAB
+-------------------------------------------------------------------*/
+.tab-link {
+    margin: 0;
+    border: none;
+    padding: 0 12px;
+    float: left;
+    position: relative;
+    display: block;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    text-decoration: none;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+    overflow: hidden;
+}
+
+/*------------------------------------------------------------------
+6. PAGE SPECIFIC
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+6.1. HOME
+-------------------------------------------------------------------*/
+.launch {
+	background: url(../img/home.jpg) center / cover;
+	height: 100vh;
+	text-align: center;
+}
+.launch h2, .launch span {
+	color: #ffffff;
+
+}
+.launch h2 {
+	margin: 0;
+	font-weight: 100;
+	letter-spacing: 5px;
+}
+.launch span {
+	font-size: 16px;
+	font-weight: 100;
+	letter-spacing: 5px;
+
+}
+
+/*------------------------------------------------------------------
+6.2. GALLERY
+-------------------------------------------------------------------*/
+.mdl-layout__content.gallery-container {
+	margin-bottom: 4px;
+}
+.mdl-grid.gallery {
+    padding: 0 2px;
+}
+.gallery .mdl-cell {
+	margin: 4px 2px 0;
+}
+.gallery.masonry img {
+	margin-bottom: 4px;
+}
+.gallery .mdl-cell--4-col {
+    width: calc(33.33333% - 4px);
+}
+.gallery .mdl-cell--6-col {
+    width: calc(50% - 4px);
+}
+.gallery .mdl-cell--8-col {
+    width: calc(66.66666% - 4px);
+}
+.gallery .mdl-cell--12-col {
+	width: calc(100% - 4px);
+}
+
+/*------------------------------------------------------------------
+6.3. BLOG
+-------------------------------------------------------------------*/
+.load-more {
+	color: #757575;
+	float: right;
+	margin: 16px 16px 32px 0;
+}
+.load-more button {
+	background: #f5f5f5;
+	margin-left: 16px;
+}
+.load-more button i {
+	color: #757575;
+}
+/* bg image */
+.imaged .mdl-card__title {
+	color: #fff;
+	padding: 0;
+	display: block;
+	position: relative;
+}
+.imaged .mdl-card__title img {
+	position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+/* bold text */
+.amazing .mdl-card__title {
+    background-color: #263238;
+    position: relative;
+}
+.amazing h3.quote {
+	margin: 0;
+}
+.amazing h3.quote:before {
+    content: '“';
+}
+.amazing h3.quote:after {
+    content: '“';
+}
+.amazing h3.quote:before, .amazing h3.quote:after  {
+    display: block;
+    font-size: 3em;
+    margin-top: 0.5em;
+}
+
+/*------------------------------------------------------------------
+6.4. ARTICLE
+-------------------------------------------------------------------*/
+.article {
+	position: absolute;
+	top: 80px;
+	padding: 16px;
+	margin: 0;
+}
+.article h4 {
+	font-size: 24px;
+	color: #ffffff;
+	margin-top: 0;
+	margin-left: 16px;
+}
+.article-content {
+	padding: 16px;
+	background: #ffffff;
+	border-radius: 2px;
+}
+.author {
+	margin-bottom: 16px;
+}
+.share {
+	float: right;
+	margin-top: 6px;
+}
+.comment-count {
+	margin-top: 32px;
+	display: block;
+}
+.comment {
+	margin-bottom: 32px;
+}
+.comment p {
+	margin-top: 10px;
+	margin-left: 60px;
+	font-size: 13px;
+}
+.reply {
+	margin-left: 60px;
+}
+.reply p {
+	margin-top: 10px;
+	margin-left: 60px;
+	font-size: 13px;
+}
+
+/*------------------------------------------------------------------
+6.5. PLAYER
+-------------------------------------------------------------------*/
+.player-info {
+	padding: 22px 16px;
+	position: relative;
+}
+.player-info h4 {
+	margin: 0 0 8px;
+	font-weight: 300;
+	color: #ffffff;
+}
+.player-info span {
+	font-weight: 300;
+	color: #ffffff;
+}
+.player-info button {
+	position: absolute;
+	top: -28px;
+	right: 16px;
+}
+.player-controls {
+	padding: 16px 32px;
+	color: #ffffff;
+	font-size: 24px;
+}
+.player-contents, .player-featured {
+	color: rgba(0,0,0,.54);
+	padding: 16px 0;
+}
+.player-contents p {
+	padding-left: 16px;
+	margin: 0;
+	position: relative;
+}
+.player-featured p {
+	padding-left: 16px;
+	margin: 0;
+	position: relative;
+}
+.player-contents ul {
+	padding-left: 0;
+}
+.player-contents li {
+	display: block;
+	padding: 16px;
+	color: rgba(0,0,0,.54);
+	cursor: pointer;
+	position: relative;
+}
+.player-contents li:last-child {
+	margin-bottom: 72px;
+}
+.player-contents p > button, .player-featured p > button {
+	position: absolute;
+	right: 16px;
+	top: -6px;
+}
+.player-contents li a {
+	position: absolute;
+	right: 16px;
+	top: 10px;
+}
+.player-contents li:hover {
+	background-color: #e0e0e0;
+}
+.player-contents li:first-letter {
+	margin-right: 32px;
+	color: rgba(0,0,0,.3);
+}
+.player-featured .mdl-card {
+	padding-bottom: 4px;
+}
+.player-featured img {
+	margin-bottom: 3px;
+}
+.player-featured span {
+	color: rgba(0,0,0,.54);
+	font-size: 14px;
+	font-weight: 300;
+	padding: 0 10px;
+	display: block;
+}
+.playing-now {
+	height: 72px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background-color: #fff;
+	color: rgba(0,0,0,.54);
+	z-index: 4;
+}
+.playing-now span {
+	font-size: 14px;
+	padding-left: 16px;
+}
+.playing-now img {
+	height: auto;
+	width: 72px;
+}
+.playing-now button {
+	position: absolute;
+	right: 16px;
+	top: 17px;
+}
+
+/*------------------------------------------------------------------
+6.6. PROFILE
+-------------------------------------------------------------------*/
+.profile-page {
+	position: relative;
+}
+.contact-info {
+	padding: 22px 0;
+    position: absolute;
+    background-color: transparent;
+    bottom: 0;
+    width: 100%;
+}
+.contact-info h3 {
+	margin: 0 0 0 16px;
+	font-weight: 300;
+	color: #ffffff;
+}
+.contact-info span {
+	font-weight: 300;
+	color: #ffffff;
+}
+.contact-info button {
+	position: absolute;
+	top: 53px;
+	right: 16px;
+}
+
+.contact-about {
+	padding: 38px 16px 16px;
+	text-align: center;
+	background: #f1f4f5;
+	color: rgba(0,0,0,.54);
+}
+.contact-about .mdl-card {
+	padding: 16px;
+	margin-bottom: 16px;
+}
+.contact-about .mdl-card span {
+	display: block;
+}
+.about.mdl-card button {
+	margin-bottom: 16px;
+}
+.contact-about table {
+	margin-bottom: 16px;
+}
+.movie-controller {
+	padding: 16px;
+	height: 32px;
+}
+.contact-about .mdl-card.movie {
+	padding: 0;
+	text-align: left;
+	color: rgba(0,0,0,.54);
+	font-size: 12px;
+	font-weight: 100;
+}
+.contact-about .mdl-card.movie button:first-child, .contact-about .mdl-card.movie span {
+	float: left;
+}
+.contact-about .mdl-card.movie button, .contact-about .mdl-card.movie .mdl-slider__container {
+	float: right;
+}
+.movie .mdl-slider__container {
+	width: 100px;
+}
+.movie .mdl-slider {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+}
+.movie .mdl-slider__background-flex {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+}
+.movie span {
+	line-height: 32px;
+	padding-left: 16px;
+}
+.mdl-slider__container {
+	margin-top: 7px;
+}
+.mdl-card.weather {
+	padding: 0;
+	text-align: center;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 100;
+	background: url(../img/2.jpg);
+	position: relative;
+}
+.mdl-card.weather > span {
+	padding: 16px;
+	font-size: 16px;
+}
+.mdl-card.weather h2 {
+	font-size: 100px;
+	font-weight: 100;
+	margin: 80px 0;
+}
+.mdl-card.weather h2:after {
+	content: "°";
+	position: absolute;
+}
+.mdl-card.weather h4 {
+	margin: 0;
+}
+.mdl-card.weather button {
+	line-height: 260px;
+	position: absolute;
+	top: 35%;
+}
+.mdl-card.weather button.left {
+	left: 16px;
+}
+.mdl-card.weather button.right {
+	right: 16px;
+}
+.mdl-card .weather-info {
+	padding: 16px;
+	background: #ffffff;
+	color: rgba(0,0,0,.54);
+}
+.title {
+	margin-top: 32px;
+	margin-bottom: 16px;
+	display: block;
+	text-align: left;
+}
+
+/*------------------------------------------------------------------
+6.7. LOGIN
+-------------------------------------------------------------------*/
+.login-bg {
+	background: url(../img/10_blur.jpg) center / cover;
+	height: 100vh;
+	overflow: hidden;
+	padding: 0 16px;
+	width: calc(100% - 32px);
+}
+.login {
+	background: #ffffff;
+	border-radius: 2px;
+	margin-top: 16px;
+}
+.account-navigation i {
+	color: #ffffff;
+}
+.account-info {
+	padding: 16px;
+	color: #ffffff;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+.account-info span {
+	display: block;
+	margin-left: 32px;
+	font-size: 16px;
+	font-weight: 300;
+}
+.minilogo-account {
+    width: 56px;
+    height: 56px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 56px;
+    border-radius: 100%;
+    background-color: #F5F5F5;
+    margin: 8px 16px 32px 32px;
+}
+.account-data {
+	padding: 16px 48px 32px;
+}
+.account-data form {
+	margin-bottom: 32px;
+}
+.account-data .mdl-textfield {
+	width: 100%;
+}
+
+/*------------------------------------------------------------------
+6.8. MESSAGES
+-------------------------------------------------------------------*/
+.chat .message p {
+  margin-bottom: 0;
+}
+.chat span {
+  font-size: 12px;
+}
+.chat ul {
+  padding: 16px;
+}
+.chat ul li {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.chat ul li img {
+  float: left;
+}
+.chat ul li .message {
+  margin-left: 72px;
+  position: relative;
+  padding: 8px 16px; 
+}
+.chat ul li.message-right img {
+  float: right;
+}
+.chat ul li.message-right .message {
+  margin-right: 72px;
+  margin-left: 0;
+  color: rgba(0,0,0,.54);
+}
+.chat ul li.message-left img {
+	margin-left: 16px;
+	margin-right: 0;
+}
+.chat ul li.message-left .message {
+  color: rgba(0,0,0,.54);
+  background-color: #ffffff;
+}
+.chat ul li.message-right .message:before {
+  content: "";
+  width: 0;
+  height: 0px;
+  position: absolute;
+  right: 1px;
+  top: 0;
+  margin-right: -10px;
+  border-top: 12px solid #4CAF50;
+  border-right: 10px solid transparent;
+}
+.chat ul li.message-left .message:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  left: 1px;
+  top: 0;
+  margin-left: -10px;
+  border-top: 12px solid #fff;
+  border-left: 10px solid transparent;
+}
+.chat ul li:last-child {
+	margin-bottom: 72px;
+}
+.write-message {
+	height: 72px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background-color: #fff;
+	color: rgba(0,0,0,.54);
+	z-index: 100;
+}
+.write-message .mdl-button--mini-fab.send {
+	position: absolute;
+	right: 16px;
+	top: 16px;
+}
+.write-message .mdl-textfield {
+	margin-left: 8px;
+	width: calc(100% - 136px);
+}
+.write-message button {
+	margin-left: 16px;
+}
+
+/*------------------------------------------------------------------
+6.9. SETTINGS
+-------------------------------------------------------------------*/
+.settings .title {
+	padding: 8px 16px;
+	background-color: #dddddd;
+}
+.settings i {
+	float: left;
+    margin-right: 32px;
+}
+.settings p {
+	margin: 0;
+}
+.settings span {
+    float: left;
+    line-height: 26px;
+}
+.settings li {
+	width: calc(100% - 32px);
+	list-style-type: none;
+	padding: 16px;
+	border-bottom: 1px solid #dddddd;
+}
+.settings label {
+	float: right;
+	margin-right: 16px;
+}
+.settings .mdl-slider__container {
+	width: 180px;
+	float: right;
+	margin-top: 5px;
+	margin-right: -16px;
+}
+.settings .mdl-switch {
+	width: auto;
+}
+.settings .mdl-icon-toggle {
+	width: 32px;
+	margin-right: 0;
+}
+
+/*------------------------------------------------------------------
+6.10. CALENDAR
+-------------------------------------------------------------------*/
+.calendar-day {
+	width: calc(100% - 32px);
+	background: #fff;
+	padding: 16px 16px 0 16px;
+	border-bottom: 1px solid #eee;
+}
+.calendar-day span {
+	display: block;
+}
+.calendar-day > span {
+	margin-left: 66px;
+	margin-bottom: 16px;
+}
+.calendar-date {
+	width: 50px;
+	float: left;
+}
+.calendar-date span:first-child {
+	font-size: 20px;
+	color: #000;
+	font-weight: 400;
+}
+.calendar-activity {
+	/*
+	width: calc(100% - 98px);
+    float: right;
+	*/
+    margin-bottom: 16px;
+    padding: 16px 32px 16px 16px;
+    border-radius: 2px;
+    color: #fff;
+    position: relative;
+}
+.calendar-activity .mdl-button {
+	position: absolute;
+	top: 2px;
+	right: 8px;
+	padding: 0;
+	height: auto;
+	min-width: 0;
+}
+.calendar-activity .mdl-button:hover {
+    background-color: transparent;
+}
+.calendar-activity a i {
+	opacity: 0.6;
+	color: #fff;
+	font-size: 18px;
+}
+.calendar-activity span {}
+.calendar-hour {
+	font-weight: 100;
+	font-size: 12px;
+}
+.now {
+	padding: 0;
+	width: calc(100% - 32px);
+}
+.now .circle {
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	float: left;
+}
+.now .line {
+	height: 2px;
+	width: 100%;
+	float: left;
+	position: relative;
+	top: -6px;
+}
+.teal {
+	background-color: #4DB6AC;
+}
+.cyan {
+	background-color: #0097A7;
+}
+.green {
+	background-color: #9CCC65;
+}
+.red {
+	background-color: #E57373;
+}
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1024px) {
+
+.mdl-layout__header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.mdl-layout__drawer-button {
+	color: #ffffff;
+}
+
+}
+
+
+@media (max-width: 839px) and (min-width: 480px) {
+
+.mdl-cell--4-col {
+    width: calc(33.33333% - 16px);
+}
+.gallery .mdl-cell--4-col {
+    width: calc(33.33333% - 4px);
+}
+.gallery .mdl-cell--6-col {
+    width: calc(50% - 4px);
+}
+.gallery .mdl-cell--8-col {
+    width: calc(66.66666% - 4px);
+}
+.gallery .mdl-cell--12-col {
+	width: calc(100% - 4px);
+}
+
+}
+
+
+@media (max-width: 479px) {
+
+.mdl-cell--4-col {
+    width: calc(33.33333% - 16px);
+}
+.gallery .mdl-cell--4-col {
+    width: calc(33.33333% - 4px);
+}
+.gallery .mdl-cell--6-col {
+    width: calc(50% - 4px);
+}
+.gallery .mdl-cell--8-col {
+    width: calc(66.66666% - 4px);
+}
+.gallery .mdl-cell--12-col {
+	width: calc(100% - 4px);
+}
+
+}
+
+@media (max-width: 340px) {
+.account-data .mdl-button {
+	float: none;
+	margin-top: 16px;
+}
+}

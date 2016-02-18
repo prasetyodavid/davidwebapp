@@ -25,10 +25,10 @@
         <header class="mdl-layout__header mdl-layout__header--waterfall">
           <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Home</span>
+            <span class="mdl-layout-title">Search</span>
             <!-- Spacer -->
             <div class="mdl-layout-spacer"></div>
-            <!-- Right Menu -->
+             <!-- Right Menu -->
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
               <label class="mdl-button mdl-js-button mdl-button--icon"
@@ -53,13 +53,9 @@
 
             </div>
           </div>
-          <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <a href="#scroll-tab-1" class="mdl-layout__tab is-active">New</a>
-            <a href="#scroll-tab-2" class="mdl-layout__tab">Popular</a>
-          </div>
         </header>
         <!-- Sidebar -->
-        <div class="mdl-layout__drawer">
+   <div class="mdl-layout__drawer">
           <!-- Top -->
           <div class="mdl-card mdl-shadow--2dp mdl-color--primary mdl-color-text--blue-grey-50 drawer-profile">
             <div class="mdl-card__title user">
@@ -133,80 +129,63 @@
         <main class="mdl-layout__content mdl-color--white">
         <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1"> <!-- first tab -->
 
-          <div class="player-featured">  <!-- most watched -->
-            <p><strong>Featured Video</strong>
-            </p>
-            <script src="http://davithace.github.io/davidprasetyo/android/randomvideos.js"></script>
-          </div>  
-
           <div class="player-featured"> <!-- featured cards -->
-            <p>
-                                    <input type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent pull-right" onclick="location.href='search.html?q=';" value="What's News ?" />
+            <p><strong>Result(s)</strong>
             </p>
 
-
+          <div class="player-featured" id="total_result">&nbsp;&nbsp; &nbsp;No Result</div>
             <div class="mdl-grid">
-
             <script type="text/javascript">
-            function NewContent(json) {
+           function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
 
+      var resultnum ;
+       function NewContent(json) {
+        resultnum = json.feed.openSearch$totalResults.$t;
 
-            for (var i = 0; i < 8; i++) {
+            for (var i = 0; i < resultnum; i++) {
               var judul = json.feed.entry[i].title.$t;
               var postID = json.feed.entry[i].id.$t;
+              resultnum = json.feed.openSearch$totalResults.$t;
               var postID = postID.substr(postID.indexOf("post-") + 5);
               
+              document.getElementById("total_result").innerHTML= "&nbsp;&nbsp; &nbsp; "+resultnum +" Result(s)";
 
              if(typeof json.feed.entry[i].media$thumbnail === 'undefined'){
-                thumbImg="images/no-image.jpeg"
+                thumbImg="images/no-image.jpeg";
               }else{
                 thumbImg=json.feed.entry[i].media$thumbnail.url;
               }
 
-              if (judul.length > 30){
+                if (judul.length > 30){
                   var judul = judul.substring(0, 30)+'...';
                 }
                var featuredPost  = '<div class="mdl-cell mdl-cell--6-col"><div class="mdl-card mdl-shadow--2dp"><a href="article.html?postid='+ postID +'"><img src="'+thumbImg+'" alt="" /></a><span><strong> '+judul+'</strong></span></div></div>';
               document.write(featuredPost);
             }
-
-            document.write('</div></div>');
-
-          }
-          function myhref(postID){
-            var n = postID.toString();
-            location.href="article.html?postid=" + n;
-          }
-
-          function NewContent2(json) {
-                 var x = 1;
-
-            document.write('<div class="player-contents"> <!-- playing now list --><p><strong>Blog Posts &nbsp; &nbsp;&nbsp;</strong><a href="search.html?q="><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"> READ MORE</button> </a></p><ul>');
             
-            for (var i = 0; i < json.feed.entry.length; i++) {
-              var judul = json.feed.entry[i].title.$t;
-              var postID = json.feed.entry[i].id.$t;
-              var postID = postID.substr(postID.indexOf("post-") + 5);
-             if (judul.length > 30){
-                  var judul = judul.substring(0, 30)+'...';
-                }
-              var n = "'"+postID.toString()+"'";
-              var postsList = '<li onclick="myhref('+n+');">'+ x + ' '+judul+'<a href="article.html?postid=' + postID +'" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">chevron_right</i></a></li>' ;               
-              document.write(postsList);
-              x++;
-              }
-            }
+            document.write('</div></div>');
+            
+          }
+                 
+          
             </script>
+
+          
+
             <script language="javascript" type="text/javascript">
-            var i=10;
-            var m=9;
+            var i=101;
+            var m=100;
             var s=1;
 
+            var query = getParameterByName('q'); 
+            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary?q="+ query +"&start-index="+s+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent'><\/sc" + "ript>");
             
-            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary?start-index="+s+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent'><\/sc" + "ript>");
-
-            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary?start-index="+i+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent2'><\/sc" + "ript>");
-
+          
 
             </script>
 
@@ -215,49 +194,6 @@
 
         </section>
 
-        <section class="mdl-layout__tab-panel" id="scroll-tab-2"> <!-- tab 2 -->
-        <div class="player-featured">
-          <p><strong>Popular Posts</strong>
-          </p>
-          </div>
-           <div class="mdl-grid">
-            
-            <script type="text/javascript">
-            function NewContent(json) {
-
-
-            for (var i = 0; i < 8; i++) {
-              var judul = json.feed.entry[i].title.$t;
-              var postID = json.feed.entry[i].id.$t;
-              var postID = postID.substr(postID.indexOf("post-") + 5);
-              
-
-             if(typeof json.feed.entry[i].media$thumbnail === 'undefined'){
-                thumbImg="images/no-image.jpeg"
-              }else{
-                thumbImg=json.feed.entry[i].media$thumbnail.url;
-              }
-
-               if (judul.length > 30){
-                  var judul = judul.substring(0, 30)+'...';
-                }
-               var featuredPost  = '<div class="mdl-cell mdl-cell--6-col"><div class="mdl-card mdl-shadow--2dp"><a href="article.html?postid='+ postID +'"><img src="'+thumbImg+'" alt="" /></a><span><strong> '+judul+'</strong></span></div></div>';
-              document.write(featuredPost);
-            }
-
-            document.write('</div></div>');
-
-          }
-
-            var i=10;
-            var m=9;
-            var s=1;
-
-            var tags = 'popular' //postID
-            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary/-/" + tags + "?start-index="+s+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent'><\/sc" + "ript>");
-            </script>
-        </div>
-        </section>
       </main>
     </div>
     </div>
@@ -268,13 +204,5 @@
     <script src="js/material.min.js"></script>
     <script src="js/jquery.swipebox.min.js"></script>
     <script src="js/function.js"></script>
-
-    <script type="text/javascript">
-//initialstorage
-if(localStorage.getItem("init") == null){
- localStorage.setItem("init", 0);
-}
-</script>
-
   </body>
 </html>

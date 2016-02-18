@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Gravity</title>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/robotofont.css" type="text/css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/animsition.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/material.teal-deep_orange.min.css">  
+    <link rel="stylesheet" href="css/swipebox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/dcsns_wall.css" media="all" />
+
+  </head>
+
+  <body>
+    <div class="animsition">
+      <!-- Header -->
+      <header class="mdl-layout__header mdl-layout__header--waterfall transparent-header no-drawer">
+
+              <header class="mdl-layout__header mdl-layout__header--waterfall">
+          <div class="mdl-layout__header-row">
+            <!-- Spacer -->
+            <span class="mdl-layout-title">Live Updates</span>
+            <div class="mdl-layout-spacer"></div>
+            <!-- Right Menu -->
+            <a href="index.html" class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">arrow_back</i>
+            </a>
+          </div>
+        </header>
+        <main class="mdl-layout__content">
+
+            <div id="wall">
+
+            <div class="wall-outer">
+            <div id="ticker1"></div>
+
+            <div id="social-stream"></div>
+                <div class="clear"></div>
+            </div>
+            </div>
+
+        </main>
+
+      </div>
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/animsition.js"></script>
+    <script src="js/sweetalert.min.js"></script> 
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.3/js/material.min.js"></script>
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/sweet.js"></script>
+
+
+     <script type="text/javascript" src="js/jquery.social.stream.1.5.7.js"></script>
+    <script type="text/javascript" src="js/jquery.social.stream.wall.1.6.js"></script>
+    <script src='http://davidprasetyo.com/feeds/posts/default?orderby=published&alt=json-in-script&callback=blogger_thumbs'></script>
+
+
+<script>
+
+ $(document).ready(function(){
+
+  $('#ticker1').rssfeed('https://queryfeed.net/tw?q=%40davithace',{
+    snippet: true
+  });
+
+}); 
+
+$(window).load(function(){
+$('#social-stream').dcSocialStream({
+    feeds: {
+      custom_twitter: {
+        id: 'https://queryfeed.net/tw?q=%40davithace',
+        intro: 'Tweet',
+        out: 'intro,text,thumb_enc',
+        text: 'contentSnippet',
+        icon: 'twitter.png'
+      },
+      rss: {
+        id: 'http://www.davidprasetyo.com/feeds/posts/default?orderby=published',
+        intro: 'Posted',
+        out: 'intro,blogger_thumb,title,text,share',
+        text: 'contentSnippet',
+        icon: 'rss.png'
+      },
+      custom_facebook: {
+        id: 'http://fbrss.com/feed/6009f36b4453aff3508cd06c4615daeee8b15f0d.xml?me',
+        intro: 'Posted',
+        out: 'intro,thumb,title,text,share',
+        text: 'contentSnippet',
+        icon: 'facebook.png'
+      },
+      custom_google: {
+        id: 'http://gplusrss.com/rss/feed/535ea2b438c297f5dfa7508ba13b7c385453031f101c4',
+        intro: 'Posted',
+        out: 'intro,thumb_gplus,title,text,share',
+        text: 'contentSnippet',
+        icon: 'google.png'
+      },
+
+      custom_instagram: {
+        id: 'http://instagrss-mgng.rhcloud.com/davithace',
+        intro: 'Posted',
+        out: 'intro,thumb_insta,title',
+        icon: 'instagram.png',
+      },
+
+      custom_youtube: {
+        id: 'https://www.youtube.com/feeds/videos.xml?user=davidprasetyo19',
+        intro: 'Uploaded',
+        out: 'intro,thumb,title,text',
+        icon: 'youtube.png'
+      },
+
+      custom_path: {
+        id: 'https://queryfeed.net/twitter?q=path.com+from%3Adavithace&geocode=',
+        intro: 'Updated',
+        out: 'intro,text',
+        icon: 'pinterest.png'
+      },
+    },
+    rotate: {
+      delay: 0
+    },
+    twitterId: 'davithace',
+    control: false,
+    filter: true,
+    wall: true,
+    center: true,
+    cache: true,
+    max: 'limit',
+    limit: 10,
+    iconPath: '',
+    imagePath: ''
+  });
+});
+  
+</script>
+<style>
+#wall {padding: 10px 0 0; min-height: 2000px;}
+</style>
+
+  </body>
+</html>

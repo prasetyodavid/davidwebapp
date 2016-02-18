@@ -25,7 +25,7 @@
         <header class="mdl-layout__header mdl-layout__header--waterfall">
           <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Home</span>
+            <span id="nama_kategori" class="mdl-layout-title">Home</span>
             <!-- Spacer -->
             <div class="mdl-layout-spacer"></div>
             <!-- Right Menu -->
@@ -53,13 +53,9 @@
 
             </div>
           </div>
-          <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <a href="#scroll-tab-1" class="mdl-layout__tab is-active">New</a>
-            <a href="#scroll-tab-2" class="mdl-layout__tab">Popular</a>
-          </div>
         </header>
         <!-- Sidebar -->
-        <div class="mdl-layout__drawer">
+   <div class="mdl-layout__drawer">
           <!-- Top -->
           <div class="mdl-card mdl-shadow--2dp mdl-color--primary mdl-color-text--blue-grey-50 drawer-profile">
             <div class="mdl-card__title user">
@@ -133,105 +129,36 @@
         <main class="mdl-layout__content mdl-color--white">
         <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1"> <!-- first tab -->
 
-          <div class="player-featured">  <!-- most watched -->
-            <p><strong>Featured Video</strong>
-            </p>
-            <script src="http://davithace.github.io/davidprasetyo/android/randomvideos.js"></script>
-          </div>  
 
           <div class="player-featured"> <!-- featured cards -->
-            <p>
-                                    <input type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent pull-right" onclick="location.href='search.html?q=';" value="What's News ?" />
-            </p>
+          <p>
+            <script type="text/javascript">
 
+           function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
+            var q =getParameterByName('tag');
+                      document.write('<div class="player-contents"><a href="search.html?q='+q+'">&nbsp; &nbsp;<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"> NEWEST !</button> </a></p><ul>');
+            </script>
+            </p>
 
             <div class="mdl-grid">
 
             <script type="text/javascript">
-            function NewContent(json) {
+            
 
+            function NewContent(json) {
+          document.getElementById("nama_kategori").innerHTML=getParameterByName('tag');
 
             for (var i = 0; i < 8; i++) {
               var judul = json.feed.entry[i].title.$t;
               var postID = json.feed.entry[i].id.$t;
               var postID = postID.substr(postID.indexOf("post-") + 5);
               
-
-             if(typeof json.feed.entry[i].media$thumbnail === 'undefined'){
-                thumbImg="images/no-image.jpeg"
-              }else{
-                thumbImg=json.feed.entry[i].media$thumbnail.url;
-              }
-
-              if (judul.length > 30){
-                  var judul = judul.substring(0, 30)+'...';
-                }
-               var featuredPost  = '<div class="mdl-cell mdl-cell--6-col"><div class="mdl-card mdl-shadow--2dp"><a href="article.html?postid='+ postID +'"><img src="'+thumbImg+'" alt="" /></a><span><strong> '+judul+'</strong></span></div></div>';
-              document.write(featuredPost);
-            }
-
-            document.write('</div></div>');
-
-          }
-          function myhref(postID){
-            var n = postID.toString();
-            location.href="article.html?postid=" + n;
-          }
-
-          function NewContent2(json) {
-                 var x = 1;
-
-            document.write('<div class="player-contents"> <!-- playing now list --><p><strong>Blog Posts &nbsp; &nbsp;&nbsp;</strong><a href="search.html?q="><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"> READ MORE</button> </a></p><ul>');
-            
-            for (var i = 0; i < json.feed.entry.length; i++) {
-              var judul = json.feed.entry[i].title.$t;
-              var postID = json.feed.entry[i].id.$t;
-              var postID = postID.substr(postID.indexOf("post-") + 5);
-             if (judul.length > 30){
-                  var judul = judul.substring(0, 30)+'...';
-                }
-              var n = "'"+postID.toString()+"'";
-              var postsList = '<li onclick="myhref('+n+');">'+ x + ' '+judul+'<a href="article.html?postid=' + postID +'" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">chevron_right</i></a></li>' ;               
-              document.write(postsList);
-              x++;
-              }
-            }
-            </script>
-            <script language="javascript" type="text/javascript">
-            var i=10;
-            var m=9;
-            var s=1;
-
-            
-            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary?start-index="+s+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent'><\/sc" + "ript>");
-
-            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary?start-index="+i+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent2'><\/sc" + "ript>");
-
-
-            </script>
-
-            </ul>
-          </div>
-
-        </section>
-
-        <section class="mdl-layout__tab-panel" id="scroll-tab-2"> <!-- tab 2 -->
-        <div class="player-featured">
-          <p><strong>Popular Posts</strong>
-          </p>
-          </div>
-           <div class="mdl-grid">
-            
-            <script type="text/javascript">
-            function NewContent(json) {
-
-
-            for (var i = 0; i < 8; i++) {
-              var judul = json.feed.entry[i].title.$t;
-              var postID = json.feed.entry[i].id.$t;
-              var postID = postID.substr(postID.indexOf("post-") + 5);
-              
-
              if(typeof json.feed.entry[i].media$thumbnail === 'undefined'){
                 thumbImg="images/no-image.jpeg"
               }else{
@@ -247,16 +174,133 @@
 
             document.write('</div></div>');
 
+
           }
 
+          function myhref(postID){
+            var n = postID.toString();
+            location.href="article.html?postid=" + n;
+          }
+
+          
+          function NewContent2(json) {
+                 var x = 1;
+
+           document.write('<div class="player-contents"><a href="search.html?q='+q+'">&nbsp; &nbsp;<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"> MORE LIKE THESE</button> </a></p><ul>');
+            
+            for (var i = 0; i < 10; i++) {
+              var judul = json.feed.entry[i].title.$t;
+              var postID = json.feed.entry[i].id.$t;
+              var postID = postID.substr(postID.indexOf("post-") + 5);
+              var judul = judul.substring(0, 30)+'...';
+              var n = "'"+postID.toString()+"'";
+              var postsList = '<li onclick="myhref('+n+');">'+ x + ' '+judul+'<a href="article.html?postid=' + postID +'" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">chevron_right</i></a></li>' ;                
+              document.write(postsList);
+              x++;
+              }
+            }
+            </script>
+
+            <script language="javascript" type="text/javascript">
             var i=10;
             var m=9;
             var s=1;
+            
+            var tags = getParameterByName('tag'); //postID
 
-            var tags = 'popular' //postID
             document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary/-/" + tags + "?start-index="+s+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent'><\/sc" + "ript>");
+
+            document.write("<script language='javascript' type='text/javascript' src='http://www.davidprasetyo.com/feeds/posts/summary/-/"+ tags +"?start-index="+i+"&orderby=published&max-results="+m+"&alt=json-in-script&callback=NewContent2'><\/sc" + "ript>");
             </script>
-        </div>
+
+            </ul>
+          </div>
+
+        </section>
+
+        <section class="mdl-layout__tab-panel" id="scroll-tab-2"> <!-- tab 2 -->
+          
+          <div class="player-featured">
+            <p><strong>Lastest Posts</strong>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+              MORE
+            </button>
+            </p>
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-card mdl-shadow--2dp">
+                  <img src="img/5.jpg" alt="" />
+                  <span><strong>Jim</strong></span>
+                  <span>Long Trip</span>
+                </div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-card mdl-shadow--2dp">
+                  <img src="img/2.jpg" alt="" />
+                  <span><strong>Rob</strong></span>
+                  <span>Seaside</span>
+                </div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-card mdl-shadow--2dp">
+                  <img src="img/3.jpg" alt="" />
+                  <span><strong>Sam</strong></span>
+                  <span>Party</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="player-contents">
+            <p><strong>Playing Now</strong>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+              MORE
+            </button>
+            </p>
+            <ul>
+            <li>1 Big Love 
+              <a class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </a>
+            </li>
+            <li>2 What a Shame
+              <a class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </a>
+            </li>
+            <li>3 Do Yourself
+              <a class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </a>
+            </li>
+            <li>4 Blue Blood
+              <a class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </a>
+            </li>
+            <li>5 Giant Three
+              <a class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </a>
+            </li>
+            <li>6 I'm Selfish
+              <a class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+              </a>
+            </li>
+            </ul>
+          </div>
+
+          <div class="playing-now mdl-shadow--8dp">
+            <img src="img/face.jpg" alt="" />
+            <span><strong>Jamie Lidell</strong> / Wave
+            <button class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">pause</i>
+            </button>
+            </span>
+          </div>
+        
         </section>
       </main>
     </div>
@@ -268,13 +312,5 @@
     <script src="js/material.min.js"></script>
     <script src="js/jquery.swipebox.min.js"></script>
     <script src="js/function.js"></script>
-
-    <script type="text/javascript">
-//initialstorage
-if(localStorage.getItem("init") == null){
- localStorage.setItem("init", 0);
-}
-</script>
-
   </body>
 </html>
