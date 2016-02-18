@@ -83,9 +83,21 @@ Primary use: App & Mobile Website
     float: left;
 }
 .user1 {
-	background-image: url('../img/user.jpg');
+	background-image: url('../img/user1.jpg');
 }
 .user2 {
+	background-image: url('../img/user2.jpg');
+}
+.user3 {
+	background-image: url('../img/user3.jpg');
+}
+.user4 {
+	background-image: url('../img/user4.jpg');
+}
+.user5 {
+	background-image: url('../img/user5.jpg');
+}
+.userx {
 	background-image: url('../img/sub-user.jpg');
 }
 
